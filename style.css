@@ -1,0 +1,39 @@
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: #e0f7fa;
+    color: #2e7d32;
+    margin: 0;
+    padding: 0;
+}
+header.portada {
+    background: url('assets/naturaleza.png') no-repeat center center;
+    background-size: cover;
+    padding: 50px;
+    text-align: center;
+}
+h1 {
+    font-size: 2em;
+    color: #00796b;
+}
+.foto-familia {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #4caf50;
+    margin: 20px auto;
+}
+.nivel {
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    margin: 20px;
+}
+.candado {
+    font-size: 1.2em;
+    color: #fbc02d;
+}
+footer {
+    background: #a5d6a7;
+    text-align: center;
+    padding: 10px;
+}
