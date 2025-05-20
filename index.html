@@ -163,15 +163,5 @@ index_html = """
 
 </body>
 </html>
-"""
 
-# Guardar el archivo index.html
-index_path = project_dir / "index.html"
-index_path.write_text(index_html, encoding="utf-8")
 
-# Crear archivo ZIP
-zip_path = Path("/mnt/data/pequenos_guardianes_actualizado.zip")
-with ZipFile(zip_path, "w") as zipf:
-    zipf.write(index_path, arcname="index.html")
-
-zip_path.name
