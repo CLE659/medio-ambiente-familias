@@ -5,130 +5,132 @@
   <title>Cuidando el medio ambiente en familia</title>
   <style>
     body {
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Fredoka', sans-serif;
+      background-color: #eafaf1;
       margin: 0;
       padding: 0;
-      background: #e6f5e9;
       color: #333;
     }
-    header, footer {
-      background: #66bb6a;
-      color: white;
-      text-align: center;
-      padding: 1rem;
+    header, section, footer {
+      padding: 20px;
+      margin: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    h1, h2, h3 {
-      font-family: 'Baloo', cursive;
+    h1, h2 {
       color: #2e7d32;
     }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .desafio {
-      background: #ffffff;
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 0;
+      border: none;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      padding: 1rem;
-      transition: background 0.5s;
+      cursor: pointer;
+      font-size: 16px;
     }
-    .desafio.completado {
-      background: #d0f0c0;
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
-    .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
+    .nivel {
+      display: none;
     }
-    .galeria img, .galeria video {
-      max-width: 200px;
-      border-radius: 10px;
-    }
-    .formulario iframe {
+    iframe {
       width: 100%;
       height: 500px;
       border: none;
+      margin-top: 15px;
     }
-    .foto-familia input {
-      display: block;
-      margin-top: 1rem;
+    #foto-familia-preview {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
     }
-    .felicitacion {
-      display: none;
-      font-size: 1.2rem;
-      margin-top: 1rem;
+    .galeria-link {
+      font-weight: bold;
       color: #2e7d32;
-    }
-    .visible {
-      display: block !important;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Bienvenidos a "Cuidando el medio ambiente en familia"</h1>
+    <h1>Bienvenidos a Cuidando el medio ambiente en familia</h1>
     <h2>Instituto San Francisco de Asís - Año 2025</h2>
-  </header>  <section class="foto-familia">
-    <h2>Foto de la familia del pequeño/a guardián</h2>
-    <input type="file" accept="image/*" onchange="mostrarFoto(event)" />
-    <img id="preview-familia" src="" alt="Foto familiar" style="max-width:100%; margin-top: 1rem; display: none; border: 3px dashed #4caf50;" />
-  </section>  <section id="nivel1" class="desafio">
-    <h3>Nivel 1: ¡Manos a la obra!</h3>
-    <p>Crear un juguete con materiales reciclables y subir una imagen.</p>
-    <div class="formulario">
-      <iframe src="https://forms.gle/JmV9YbhGjTVN8JpW8" onload="setTimeout(() => desbloquearNivel('nivel2'), 10000)"></iframe>
-    </div>
-    <div class="felicitacion" id="felicitacion1">¡Felicitaciones! Nivel 1 completado.</div>
-  </section>  <section id="nivel2" class="desafio">
-    <h3>Nivel 2: ¡Observamos y reflexionamos!</h3>
-    <p>Realizar un dibujo de un ambiente limpio y uno sucio. Subir la imagen.</p>
-    <div class="formulario">
-      <iframe src="https://forms.gle/YiDvgj3m2kugQBaU9" onload="setTimeout(() => desbloquearNivel('nivel3'), 10000)"></iframe>
-    </div>
-    <div class="felicitacion" id="felicitacion2">¡Excelente! Nivel 2 superado.</div>
-  </section>  <section id="nivel3" class="desafio">
-    <h3>Nivel 3: ¡Hablamos en familia!</h3>
-    <p>Grabar un video explicando por qué es importante cuidar el medio ambiente. Subir el video.</p>
-    <div class="formulario">
-      <iframe src="https://forms.gle/mZh2535NV5A1fonr7" onload="setTimeout(() => mostrarFelicitacion('felicitacion3'), 10000)"></iframe>
-    </div>
-    <div class="felicitacion" id="felicitacion3">¡Gran trabajo! Completaste todos los desafíos.</div>
-  </section>  <section>
-    <h2>Misión Completa Guardianes</h2>
-    <p>Visualizá los trabajos de todos los participantes en la galería oficial:</p>
-    <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ver galería de los Guardianes</a>
-  </section>  <footer>
     <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
-    <p><a href="https://www.instagram.com/inst_san_francisco?igsh=MmFsbHpqemo0NzYx" target="_blank" style="color: white;">Instagram del Instituto</a></p>
+    <label for="nombreFamilia">Nombre de la familia participante:</label><br />
+    <input type="text" id="nombreFamilia" placeholder="Ej: Familia Gómez" oninput="guardarNombre()" />
+    <br /><br />
+    <label for="fotoFamilia">Foto de la familia del pequeño/a guardián:</label><br />
+    <input type="file" accept="image/*" onchange="mostrarFoto(event)" /><br />
+    <img id="foto-familia-preview" />
+  </header>  <section>
+    <h2>Nivel 1: ¡Manos a la obra!</h2>
+    <p>Desafío: Crear un juguete con materiales reciclables y subir una imagen del resultado.</p>
+    <button onclick="mostrarFormulario('nivel1')">Subir imagen</button>
+    <div id="nivel1" class="nivel">
+      <iframe id="form1" src=""></iframe>
+      <button onclick="desbloquearNivel('nivel2', this)">Ya subí mi imagen</button>
+    </div>
+  </section>  <section>
+    <h2>Nivel 2: ¡Observamos y reflexionamos!</h2>
+    <p>Desafío: Dibujar un ambiente limpio y otro contaminado. Subí una imagen del dibujo.</p>
+    <button onclick="mostrarFormulario('nivel2')" disabled>Subir dibujo</button>
+    <div id="nivel2" class="nivel">
+      <iframe id="form2" src=""></iframe>
+      <button onclick="desbloquearNivel('nivel3', this)">Ya subí mi dibujo</button>
+    </div>
+  </section>  <section>
+    <h2>Nivel 3: ¡Hablamos en familia!</h2>
+    <p>Desafío: Grabar un video explicando por qué es importante cuidar el medio ambiente y subirlo.</p>
+    <button onclick="mostrarFormulario('nivel3')" disabled>Subir video</button>
+    <div id="nivel3" class="nivel">
+      <iframe id="form3" src=""></iframe>
+      <button onclick="mostrarFelicitacion()">¡Desafíos completados!</button>
+    </div>
+  </section>  <section id="final" style="display:none">
+    <h2>¡Felicitaciones, pequeño/a guardián del planeta!</h2>
+    <p>Has completado todos los desafíos. ¡Gracias por ser parte del cambio!</p>
+    <img src="https://i.imgur.com/Vkzb1Qf.png" alt="Felicitación" style="width: 100%; max-width: 400px;" />
+  </section>  <footer>
+    <h2>Misión completa - Guardianes</h2>
+    <p>Visualizá todos los trabajos de las familias participantes aquí:</p>
+    <a class="galeria-link" href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ir a la carpeta de los guardianes</a>
   </footer>  <script>
-    function mostrarFoto(event) {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const img = document.getElementById('preview-familia');
-        img.src = e.target.result;
-        img.style.display = 'block';
-      };
-      reader.readAsDataURL(file);
-    }
+    function guardarNombre() {
+      const nombre = document.getElementById('nombreFamilia').value;
+      const form1 = document.getElementById('form1');
+      const form2 = document.getElementById('form2');
+      const form3 = document.getElementById('form3');
 
-    function desbloquearNivel(nivelID) {
-      const nivel = document.getElementById(nivelID);
-      if (nivel && !nivel.classList.contains('completado')) {
-        nivel.classList.add('completado');
-        const felicitacion = nivel.querySelector('.felicitacion');
-        if (felicitacion) {
-          felicitacion.classList.add('visible');
-        }
+      if (nombre) {
+        form1.src = `https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
+        form2.src = `https://docs.google.com/forms/d/e/1FAIpQLSdJmV9YbhGjTVN8JpW8/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
+        form3.src = `https://docs.google.com/forms/d/e/1FAIpQLSfZh2535NV5A1fonr7/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
       }
     }
 
-    function mostrarFelicitacion(id) {
-      const div = document.getElementById(id);
-      if (div) div.classList.add('visible');
+    function mostrarFoto(event) {
+      const preview = document.getElementById('foto-familia-preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+    }
+
+    function mostrarFormulario(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function desbloquearNivel(siguienteNivel, boton) {
+      boton.parentElement.previousElementSibling.disabled = true;
+      document.querySelector(`#${siguienteNivel} button`).disabled = false;
+      document.getElementById(siguienteNivel).style.display = 'block';
+      boton.style.backgroundColor = '#ffd54f';
+      boton.textContent = '¡Desafío superado!';
+    }
+
+    function mostrarFelicitacion() {
+      document.getElementById('final').style.display = 'block';
     }
   </script></body>
 </html>
