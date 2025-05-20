@@ -1,193 +1,271 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pequeños Guardianes - ISF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pequeños Guardianes - Instituto San Francisco de Asís</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f9f4;
-      color: #333;
-    }
-    header {
-      background-color: #8fd694;
-      padding: 30px 15px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #1b5e20;
-    }
-    header p {
-      margin: 10px 0 0;
-      font-size: 1.1rem;
-    }
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    .upload-button {
-      background-color: #28a745;
-      color: white;
-      font-size: 18px;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
-      display: inline-block;
-    }
-    .upload-button:hover {
-      transform: scale(1.05);
-    }
-    .level-button {
-      display: block;
+    /* Estilo extra para portada A4 */
+    #portada-img {
       width: 100%;
-      max-width: 400px;
+      max-width: 595px; /* ancho A4 en px */
+      height: auto;
+      border: 2px dashed #8fd694;
       margin: 15px auto;
-      padding: 14px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #c8e6c9;
+      display: block;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
-    .level-button.locked {
-      background-color: #e0e0e0;
-      color: #888;
-      cursor: not-allowed;
-    }
-    .level-button.unlocked:hover {
-      background-color: #a5d6a7;
-    }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .galeria img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    footer {
-      background-color: #e8f5e9;
+    #portada-container {
+      margin-bottom: 30px;
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
     }
-    .felicitacion {
-      display: none;
-      background-color: #dcedc8;
-      padding: 15px;
-      border-radius: 10px;
+    #descarga-diploma {
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 12px;
       font-weight: bold;
-      color: #33691e;
-      animation: pop 0.5s ease;
-      margin-top: 10px;
-    }
-    @keyframes pop {
-      0% { transform: scale(0.8); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      cursor: pointer;
+      margin-top: 20px;
+      display: inline-block;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      user-select: none;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Pequeños Guardianes</h1>
-    <p>Instituto San Francisco - Año 2025</p>
+    <p>Instituto San Francisco de Asís</p>
+    <p><strong>Bienvenidos a Cuidando el medio ambiente en familia</strong></p>
+    <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
   </header>
-  <div class="container">
-    <p>Este proyecto invita a las familias a sumarse al cuidado del medio ambiente a través de actividades participativas.</p>
-    <a class="upload-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform" target="_blank">¡Subí tu foto como Guardián!</a><h2>Desafíos Ambientales</h2>
-<div id="desafios">
-  <button class="level-button unlocked" data-nivel="1">Nivel 1: Separar residuos</button>
-  <div class="felicitacion" id="felicitacion-1">¡Bien hecho! Has completado el Nivel 1.</div>
 
-  <button class="level-button locked" data-nivel="2" disabled>Nivel 2: Reutilizar materiales</button>
-  <div class="felicitacion" id="felicitacion-2">¡Excelente! Nivel 2 superado.</div>
+  <main class="container">
+    <section id="portada-container">
+      <label for="inputPortada" style="font-weight: bold; cursor: pointer; color:#2e7d32;">Haz click para subir la imagen de portada (A4)</label>
+      <input type="file" id="inputPortada" accept="image/*" style="display:none" />
+      <img id="portada-img" alt="Imagen de portada A4 - Clic para subir" title="Clic para subir imagen portada" />
+    </section>
 
-  <button class="level-button locked" data-nivel="3" disabled>Nivel 3: Plantar en casa</button>
-  <div class="felicitacion" id="felicitacion-3">¡Genial! Completaste el Nivel 3.</div>
+    <section id="desafios">
+      <h2>Desafíos para Guardianes</h2>
 
-  <button class="level-button locked" data-nivel="4" disabled>Nivel 4: Caminata ecológica</button>
-  <div class="felicitacion" id="felicitacion-4">¡Súper! Nivel 4 logrado.</div>
+      <!-- Desafío 1 -->
+      <div class="desafio" data-nivel="1">
+        <h3>1. Crear un juguete con materiales reciclables y subir tu imagen</h3>
+        <input type="file" accept="image/*" id="uploadNivel1" />
+        <button disabled id="btnCompletar1">Marcar desafío 1 como completado</button>
+      </div>
 
-  <button class="level-button locked" data-nivel="5" disabled>Nivel 5: Ahorro de agua y luz</button>
-  <div class="felicitacion" id="felicitacion-5">¡Guardían completo! Felicitaciones.</div>
-</div>
+      <!-- Desafío 2 -->
+      <div class="desafio" data-nivel="2" style="margin-top:30px;">
+        <h3>2. Realizar un dibujo mostrando un medioambiente limpio y otro sucio y subir tu imagen</h3>
+        <input type="file" accept="image/*" id="uploadNivel2" disabled />
+        <button disabled id="btnCompletar2">Marcar desafío 2 como completado</button>
+      </div>
 
-<h2>Galería de Guardianes</h2>
-<p>Explorá las fotos enviadas por otras familias.</p>
-<div class="galeria" id="galeria"></div>
+      <!-- Desafío 3 -->
+      <div class="desafio" data-nivel="3" style="margin-top:30px;">
+        <h3>3. Crear un video familiar explicando por qué es importante cuidar el medio ambiente</h3>
+        <input type="file" accept="video/*" id="uploadNivel3" disabled />
+        <button disabled id="btnCompletar3">Marcar desafío 3 como completado</button>
+      </div>
 
-  </div>  <footer>
-    Proyecto Pequeños Guardianes - Instituto San Francisco - Año 2025<br/>
-    Realizado con amor por estudiantes, docentes y familias.
-  </footer>  <script>
-    const botones = document.querySelectorAll(".level-button");
-    const felicitaciones = document.querySelectorAll(".felicitacion");
-    let progreso = parseInt(localStorage.getItem("nivelActual")) || 1;
+      <div id="felicitacion" class="felicitacion"></div>
+    </section>
 
-    function actualizarDesafios() {
-      botones.forEach(btn => {
-        const nivel = parseInt(btn.dataset.nivel);
-        if (nivel <= progreso) {
-          btn.disabled = false;
-          btn.classList.remove("locked");
-          btn.classList.add("unlocked");
+    <section id="galeria" style="margin-top: 50px;">
+      <h2>Misión Completa Guardianes</h2>
+      <div class="galeria" id="galeriaContainer">
+        <!-- Aquí se muestran todas las imágenes/videos subidos -->
+      </div>
+
+      <button id="descarga-diploma">Descargar Diploma PNG</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Instituto San Francisco de Asís - Proyecto Pequeños Guardianes</p>
+  </footer>
+
+  <script>
+    // Estado niveles y archivos subidos
+    const niveles = [
+      { id: 1, name: "Desafío 1", tipo: "image", completed: false, uploadInput: "uploadNivel1", btnCompletar: "btnCompletar1" },
+      { id: 2, name: "Desafío 2", tipo: "image", completed: false, uploadInput: "uploadNivel2", btnCompletar: "btnCompletar2" },
+      { id: 3, name: "Desafío 3", tipo: "video", completed: false, uploadInput: "uploadNivel3", btnCompletar: "btnCompletar3" }
+    ];
+
+    // Cargar progreso y archivos guardados en localStorage
+    function cargarProgreso() {
+      const progreso = JSON.parse(localStorage.getItem("guardianesProgreso")) || {};
+      niveles.forEach(nivel => {
+        if (progreso[nivel.id]) {
+          nivel.completed = true;
+          habilitarNivel(nivel.id, true);
+        } else {
+          habilitarNivel(nivel.id, false);
+        }
+      });
+      cargarGaleria();
+      cargarPortada();
+    }
+
+    // Guardar progreso en localStorage
+    function guardarProgreso() {
+      const progreso = {};
+      niveles.forEach(nivel => {
+        if (nivel.completed) progreso[nivel.id] = true;
+      });
+      localStorage.setItem("guardianesProgreso", JSON.stringify(progreso));
+    }
+
+    // Habilitar o deshabilitar niveles y botones según progreso
+    function habilitarNivel(nivelId, completo) {
+      niveles.forEach((nivel, index) => {
+        const inputFile = document.getElementById(nivel.uploadInput);
+        const btn = document.getElementById(nivel.btnCompletar);
+        if (nivel.id === nivelId) {
+          inputFile.disabled = completo; // Si ya completado no subir más
+          btn.disabled = !inputFile.files.length && !completo; // habilita botón si hay archivo o ya completado
+        }
+        if (nivel.id === nivelId + 1) {
+          inputFile.disabled = !completo; // siguiente nivel sólo se habilita si anterior completo
+          btn.disabled = true;
         }
       });
     }
 
-    botones.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const nivel = parseInt(btn.dataset.nivel);
-        const mensaje = document.getElementById(`felicitacion-${nivel}`);
-        if (mensaje && nivel === progreso) {
-          mensaje.style.display = "block";
-          progreso++;
-          localStorage.setItem("nivelActual", progreso);
-          setTimeout(() => {
-            mensaje.style.display = "none";
-            actualizarDesafios();
-          }, 3000);
+    // Mostrar felicitación con familia y planeta feliz
+    function mostrarFelicitacion(nivelId) {
+      const felicitacion = document.getElementById("felicitacion");
+      felicitacion.innerHTML = `
+        <div style="font-size:1.4rem; font-weight:bold; color:#2e7d32;">
+          ¡Felicitaciones por completar el desafío ${nivelId}!
+        </div>
+        <img src="https://i.ibb.co/1zYNfZT/familia-planeta-feliz.png" alt="Familia abrazando planeta feliz" style="width:150px; margin-top:15px;" />
+      `;
+      felicitacion.style.display = "block";
+      setTimeout(() => {
+        felicitacion.style.display = "none";
+      }, 5000);
+    }
+
+    // Manejar subida y guardar archivo en localStorage (base64)
+    function manejarSubida(nivelId) {
+      const nivel = niveles.find(n => n.id === nivelId);
+      const input = document.getElementById(nivel.uploadInput);
+      const btn = document.getElementById(nivel.btnCompletar);
+      if (!input.files.length) {
+        btn.disabled = true;
+        return;
+      }
+      btn.disabled = false;
+      btn.onclick = () => {
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          // Guardar archivo base64 en localStorage con clave por nivel
+          let archivos = JSON.parse(localStorage.getItem("guardianesArchivos")) || {};
+          archivos[nivelId] = { 
+            tipo: nivel.tipo, 
+            nombre: file.name, 
+            contenido: e.target.result 
+          };
+          localStorage.setItem("guardianesArchivos", JSON.stringify(archivos));
+
+          nivel.completed = true;
+          guardarProgreso();
+          habilitarNivel(nivelId, true);
+          mostrarFelicitacion(nivelId);
+          cargarGaleria();
+          input.value = "";
+          btn.disabled = true;
+        };
+
+        reader.readAsDataURL(file);
+      };
+    }
+
+    // Cargar galería con todas las imágenes/videos subidos
+    function cargarGaleria() {
+      const galeria = document.getElementById("galeriaContainer");
+      galeria.innerHTML = "";
+      const archivos = JSON.parse(localStorage.getItem("guardianesArchivos")) || {};
+
+      Object.keys(archivos).forEach(key => {
+        const archivo = archivos[key];
+        let elemento;
+
+        if (archivo.tipo === "image") {
+          elemento = document.createElement("img");
+          elemento.src = archivo.contenido;
+          elemento.alt = `Archivo subido: ${archivo.nombre}`;
+          elemento.style.maxWidth = "100%";
+          elemento.style.borderRadius = "10px";
+          elemento.style.marginBottom = "15px";
+        } else if (archivo.tipo === "video") {
+          elemento = document.createElement("video");
+          elemento.src = archivo.contenido;
+          elemento.controls = true;
+          elemento.style.maxWidth = "100%";
+          elemento.style.borderRadius = "10px";
+          elemento.style.marginBottom = "15px";
         }
+        galeria.appendChild(elemento);
       });
-    });
+    }
 
-    actualizarDesafios();
+    // Descargar diploma como PNG (simple con canvas)
+    function descargarDiploma() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 800;
+      canvas.height = 600;
+      const ctx = canvas.getContext("2d");
 
-    // Galería desde Google Drive
-    const carpetaID = "1CNsmsHEciuLtkBFLXE-9vwtP-Ss-MIMeF_Tvwxg8SpRi0bc_KMPAqoLZTAUY2GZUS8tAqEzV";
-    const galeria = document.getElementById("galeria");
+      // Fondo verde claro
+      ctx.fillStyle = "#a5d6a7";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    fetch(`https://www.googleapis.com/drive/v3/files?q='${carpetaID}'+in+parents&key=AIzaSyDhOCJXIQXtHMWb1omz1HHXzS9psYycD60&fields=files(id,name,mimeType)&supportsAllDrives=true`)
-      .then(res => res.json())
-      .then(data => {
-        if (!data.files || data.files.length === 0) {
-          galeria.innerHTML = "<p>Aún no hay imágenes disponibles.</p>";
-        } else {
-          data.files.forEach(file => {
-            if (file.mimeType.startsWith("image/")) {
-              const img = document.createElement("img");
-              img.src = `https://drive.google.com/uc?id=${file.id}`;
-              img.alt = file.name;
-              galeria.appendChild(img);
-            }
-          });
-        }
-      })
-      .catch(() => {
-        galeria.innerHTML = "<p>Error al cargar galería.</p>";
-      });
-  </script></body>
-</html>
+      // Texto diploma
+      ctx.fillStyle = "#1b5e20";
+      ctx.font = "bold 36px 'Segoe UI'";
+      ctx.textAlign = "center";
+      ctx.fillText("Diploma de Pequeño Guardián", canvas.width / 2, 100);
+
+      ctx.font = "24px 'Segoe UI'";
+      ctx.fillText("Instituto San Francisco de Asís", canvas.width / 2, 160);
+
+      ctx.font = "20px 'Segoe UI'";
+      ctx.fillText("Reconoce a:", canvas.width / 2, 220);
+
+      ctx.font = "italic 28px 'Segoe UI'";
+      ctx.fillText("¡Tú!", canvas.width / 2, 270);
+
+      ctx.font = "20px 'Segoe UI'";
+      ctx.fillText("Por su compromiso con el cuidado del medio ambiente en familia.", canvas.width / 2, 320);
+
+      // Dibujo simple de planeta feliz (circulo y cara)
+      ctx.fillStyle = "#4caf50";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, 450, 70, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.fillStyle = "#a5d6a7";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2 - 25, 430, 15, 0, 2 * Math.PI);
+      ctx.arc(canvas.width / 2 + 25, 430, 15, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.fillStyle = "#1b5e20";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2 - 25, 430, 7, 0, 2 * Math.PI);
+      ctx.arc(canvas.width / 2 + 25, 430, 7, 0, 2 * Math.PI);
+      ctx.fill();
+
+      ctx.strokeStyle = "#1b5e20";
+      ctx
