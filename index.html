@@ -6,131 +6,81 @@
   <style>
     body {
       font-family: 'Fredoka', sans-serif;
-      background-color: #eafaf1;
+      background-color: #e6f7ec;
       margin: 0;
       padding: 0;
-      color: #333;
     }
-    header, section, footer {
+    header, section {
+      text-align: center;
       padding: 20px;
-      margin: 20px;
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    h1, h2 {
-      color: #2e7d32;
+    h1 {
+      color: #2d7c4a;
+      font-size: 2em;
     }
-    button {
-      background-color: #4caf50;
-      color: white;
-      padding: 10px 20px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+    h2 {
+      color: #1f4b32;
     }
     .nivel {
-      display: none;
-    }
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      margin-top: 15px;
-    }
-    #foto-familia-preview {
-      max-width: 100%;
-      height: auto;
-      margin-top: 10px;
+      background-color: #ffffff;
+      border: 2px dashed #a3d9a5;
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 20px;
     }
     .galeria-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 600px;
+      border-radius: 10px;
+    }
+    .portada img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 4px solid #8bc34a;
+    }
+    .familia-label {
       font-weight: bold;
-      color: #2e7d32;
+      color: #3e7630;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Bienvenidos a Cuidando el medio ambiente en familia</h1>
-    <h2>Instituto San Francisco de Asís - Año 2025</h2>
-    <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
-    <label for="nombreFamilia">Nombre de la familia participante:</label><br />
-    <input type="text" id="nombreFamilia" placeholder="Ej: Familia Gómez" oninput="guardarNombre()" />
-    <br /><br />
-    <label for="fotoFamilia">Foto de la familia del pequeño/a guardián:</label><br />
-    <input type="file" accept="image/*" onchange="mostrarFoto(event)" /><br />
-    <img id="foto-familia-preview" />
-  </header>  <section>
+    <div class="portada">
+      <h1>Bienvenidos a Cuidando el medio ambiente en familia</h1>
+      <h2>Instituto San Francisco de Asís – Año 2025</h2>
+      <p class="familia-label">FOTO DE LA FAMILIA DEL PEQUEÑO/A GUARDIÁN</p>
+      <img src="https://via.placeholder.com/800x600.png?text=Foto+de+la+Familia" alt="Foto familiar" />
+      <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
+    </div>
+  </header>  <section class="nivel">
     <h2>Nivel 1: ¡Manos a la obra!</h2>
-    <p>Desafío: Crear un juguete con materiales reciclables y subir una imagen del resultado.</p>
-    <button onclick="mostrarFormulario('nivel1')">Subir imagen</button>
-    <div id="nivel1" class="nivel">
-      <iframe id="form1" src=""></iframe>
-      <button onclick="desbloquearNivel('nivel2', this)">Ya subí mi imagen</button>
-    </div>
-  </section>  <section>
+    <p>Crear un juguete con materiales reciclables y subir una imagen.</p>
+    <iframe src="https://forms.gle/JmV9YbhGjTVN8JpW8" allowfullscreen></iframe>
+  </section>  <section class="nivel">
     <h2>Nivel 2: ¡Observamos y reflexionamos!</h2>
-    <p>Desafío: Dibujar un ambiente limpio y otro contaminado. Subí una imagen del dibujo.</p>
-    <button onclick="mostrarFormulario('nivel2')" disabled>Subir dibujo</button>
-    <div id="nivel2" class="nivel">
-      <iframe id="form2" src=""></iframe>
-      <button onclick="desbloquearNivel('nivel3', this)">Ya subí mi dibujo</button>
-    </div>
-  </section>  <section>
+    <p>Dibujar un ambiente limpio vs. uno contaminado y subir una imagen del dibujo.</p>
+    <iframe src="https://forms.gle/YiDvgj3m2kugQBaU9" allowfullscreen></iframe>
+  </section>  <section class="nivel">
     <h2>Nivel 3: ¡Hablamos en familia!</h2>
-    <p>Desafío: Grabar un video explicando por qué es importante cuidar el medio ambiente y subirlo.</p>
-    <button onclick="mostrarFormulario('nivel3')" disabled>Subir video</button>
-    <div id="nivel3" class="nivel">
-      <iframe id="form3" src=""></iframe>
-      <button onclick="mostrarFelicitacion()">¡Desafíos completados!</button>
-    </div>
-  </section>  <section id="final" style="display:none">
-    <h2>¡Felicitaciones, pequeño/a guardián del planeta!</h2>
-    <p>Has completado todos los desafíos. ¡Gracias por ser parte del cambio!</p>
-    <img src="https://i.imgur.com/Vkzb1Qf.png" alt="Felicitación" style="width: 100%; max-width: 400px;" />
-  </section>  <footer>
-    <h2>Misión completa - Guardianes</h2>
-    <p>Visualizá todos los trabajos de las familias participantes aquí:</p>
-    <a class="galeria-link" href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ir a la carpeta de los guardianes</a>
-  </footer>  <script>
-    function guardarNombre() {
-      const nombre = document.getElementById('nombreFamilia').value;
-      const form1 = document.getElementById('form1');
-      const form2 = document.getElementById('form2');
-      const form3 = document.getElementById('form3');
-
-      if (nombre) {
-        form1.src = `https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
-        form2.src = `https://docs.google.com/forms/d/e/1FAIpQLSdJmV9YbhGjTVN8JpW8/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
-        form3.src = `https://docs.google.com/forms/d/e/1FAIpQLSfZh2535NV5A1fonr7/viewform?usp=pp_url&entry.1234567890=${encodeURIComponent(nombre)}`;
-      }
-    }
-
-    function mostrarFoto(event) {
-      const preview = document.getElementById('foto-familia-preview');
-      preview.src = URL.createObjectURL(event.target.files[0]);
-    }
-
-    function mostrarFormulario(id) {
-      document.getElementById(id).style.display = 'block';
-    }
-
-    function desbloquearNivel(siguienteNivel, boton) {
-      boton.parentElement.previousElementSibling.disabled = true;
-      document.querySelector(`#${siguienteNivel} button`).disabled = false;
-      document.getElementById(siguienteNivel).style.display = 'block';
-      boton.style.backgroundColor = '#ffd54f';
-      boton.textContent = '¡Desafío superado!';
-    }
-
-    function mostrarFelicitacion() {
-      document.getElementById('final').style.display = 'block';
-    }
-  </script></body>
+    <p>Grabar un video corto en familia explicando por qué cuidar el medio ambiente.</p>
+    <iframe src="https://forms.gle/mZh2535NV5A1fonr7" allowfullscreen></iframe>
+  </section>  <section>
+    <h2>MISIÓN COMPLETA - GUARDIANES</h2>
+    <p>Visualizá los videos e imágenes subidos por todas las familias participantes.</p>
+    <a class="galeria-link" href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ir a la carpeta de los Guardianes</a>
+  </section></body>
 </html>
