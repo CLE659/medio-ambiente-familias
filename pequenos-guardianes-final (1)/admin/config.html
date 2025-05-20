@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Admin</title>
+</head>
+<body>
+  <h2>Acceso a configuración TIC</h2>
+  <form onsubmit="return validar()">
+    Usuario: <input type="text" id="user" /><br />
+    Contraseña: <input type="password" id="pass" /><br />
+    <button type="submit">Ingresar</button>
+  </form>
+
+  <script>
+    function validar() {
+      const u = document.getElementById("user").value;
+      const p = document.getElementById("pass").value;
+      if (u === "Admin" && p === "Admin") {
+        alert("Bienvenido al panel de edición de consignas.");
+      } else {
+        alert("Credenciales incorrectas");
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
