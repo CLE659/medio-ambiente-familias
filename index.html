@@ -4,359 +4,208 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cuidando el medio ambiente en familia - Instituto San Francisco de Asís</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Fredoka&family=Quicksand&display=swap" rel="stylesheet" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Fredoka+One&family=Quicksand&display=swap');
-
   body {
     font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    background: #e6f2ff;
     margin: 0; padding: 0;
-    color: #2e4a1f;
+    color: #2a3a1b;
   }
   header {
+    background: #a3d9a5;
+    padding: 30px 20px;
     text-align: center;
-    padding: 2rem 1rem 1rem;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
-    color: white;
-    position: relative;
+    font-weight: 700;
+    color: #1b3a07;
   }
-  header::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 50, 0, 0.5);
-    z-index: 1;
-  }
-  header > * {
-    position: relative; z-index: 2;
-  }
-  h1 {
-    font-family: 'Fredoka One', cursive;
-    font-size: 2.8rem;
-    margin: 0.5rem 0 0;
-  }
-  h2 {
+  header h1 {
+    font-size: 2.8em;
+    margin: 0.2em 0 0.1em;
     font-family: 'Baloo 2', cursive;
-    font-weight: 600;
-    margin-top: 0;
   }
-  p.welcome-msg {
-    font-size: 1.2rem;
-    margin: 0.5rem 0 2rem;
+  header h2 {
+    font-weight: 400;
+    font-size: 1.4em;
+    margin: 0;
   }
-  .photo-family-container {
-    width: 300px;
-    height: 400px;
-    border: 5px solid #fff;
-    margin: 0 auto 2rem;
-    background-color: #e7f3e7;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
-  .photo-family-container img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  .upload-photo-label {
-    position: absolute;
-    bottom: 5px; left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.8);
-    border-radius: 20px;
-    padding: 5px 15px;
-    cursor: pointer;
-    font-weight: 600;
-    color: #2e4a1f;
-    font-size: 0.9rem;
-  }
-  #photo-family-input {
-    display: none;
+  header p {
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 1.1em;
   }
   main {
     max-width: 900px;
-    margin: 0 auto 4rem;
-    background: #f0f9f0cc;
-    border-radius: 15px;
-    padding: 1rem 2rem 3rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  }
-  .input-group {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  label[for="family-name"] {
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-  #family-name {
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    width: 60%;
-    max-width: 350px;
-    border-radius: 8px;
-    border: 2px solid #56ab2f;
-  }
-  #start-btn {
-    margin-top: 1rem;
-    background-color: #56ab2f;
-    border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1.2rem;
-    color: white;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  #start-btn:hover {
-    background-color: #a8e063;
-  }
-  section.level {
-    margin-bottom: 2.5rem;
-    padding: 1.5rem 1rem;
-    border: 3px solid #56ab2f;
-    border-radius: 15px;
-    background-color: white;
-    opacity: 0.5;
-    transition: opacity 0.4s ease;
-    position: relative;
-  }
-  section.level.unlocked {
-    opacity: 1;
-    box-shadow: 0 0 15px #a8e063aa;
-  }
-  section.level h3 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .lock-icon {
-    width: 24px;
-    height: 24px;
-    fill: #a0a0a0;
-    transition: fill 0.3s ease;
-  }
-  section.level.unlocked .lock-icon {
-    fill: #56ab2f;
-  }
-  .challenge-desc {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #3a5a2a;
-  }
-  .btn-upload {
-    background-color: #56ab2f;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .btn-upload:hover {
-    background-color: #a8e063;
-  }
-  .thumbnail {
-    margin-top: 1rem;
-    max-width: 120px;
-    max-height: 120px;
-    border-radius: 10px;
-    border: 2px solid #56ab2f;
-  }
-  #congratulations {
-    display: none;
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #d4edda;
-    border: 3px solid #28a745;
-    border-radius: 20px;
-    color: #155724;
-    font-size: 1.6rem;
-    font-weight: 700;
-    animation: popIn 1s ease forwards;
-    margin-top: 2rem;
-  }
-  @keyframes popIn {
-    0% {
-      transform: scale(0.5);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  #gallery {
-    max-width: 900px;
-    margin: 3rem auto 6rem;
-    padding: 1rem 1rem 2rem;
-    background: #f9fef9;
-    border-radius: 20px;
-    box-shadow: 0 0 15px #a8e063aa;
-  }
-  #gallery h2 {
-    text-align: center;
-    font-family: 'Baloo 2', cursive;
-    color: #2e4a1f;
-    margin-bottom: 1rem;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    gap: 1rem;
-  }
-  .gallery-item {
-    border: 2px solid #56ab2f;
-    border-radius: 15px;
-    padding: 5px;
-    background: white;
-    box-shadow: 0 0 5px #a8e063aa;
-  }
-  .gallery-item img,
-  .gallery-item video {
-    max-width: 100%;
+    margin: 30px auto;
+    background: #fff;
     border-radius: 12px;
+    padding: 20px 30px 40px;
+    box-shadow: 0 0 15px #8aa17a55;
   }
-  .gallery-item p {
-    font-weight: 600;
-    color: #2e4a1f;
+  .section-title {
+    font-family: 'Fredoka', cursive;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #7ab75a;
+    padding-bottom: 6px;
+  }
+  #foto-familiar-container {
     text-align: center;
-    margin: 0.5rem 0 0;
+    margin-bottom: 35px;
   }
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    background: #2e4a1f;
-    color: white;
-  }
-  footer a {
-    color: #a8e063;
-    text-decoration: none;
+  #foto-familiar-label {
     font-weight: 700;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    display: block;
   }
-  footer a:hover {
+  #foto-familiar {
+    width: 300px;
+    height: 400px;
+    border: 4px solid #7ab75a;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #d9f0d9;
+  }
+  input[type="file"] {
+    margin-top: 12px;
+  }
+  .desafio {
+    border: 2px solid #a3d9a5;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 25px;
+    background: #f0faf0;
+    transition: background-color 0.4s ease;
+  }
+  .desafio.superado {
+    background-color: #b6eab7;
+  }
+  .desafio h3 {
+    font-family: 'Baloo 2', cursive;
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #356622;
+  }
+  .desafio p {
+    font-size: 1.1em;
+    margin: 8px 0 15px;
+  }
+  button.subir-btn {
+    background: #7ab75a;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+  button.subir-btn[disabled] {
+    background: #a3d9a5;
+    cursor: default;
+  }
+  button.subir-btn:hover:not([disabled]) {
+    background: #5c8b3c;
+  }
+  .miniatura {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #7ab75a;
+  }
+  video.miniatura-video {
+    max-width: 100%;
+    max-height: 240px;
+    border-radius: 8px;
+    border: 2px solid #7ab75a;
+    display: block;
+    margin-top: 10px;
+  }
+  #mision-completa {
+    margin-top: 40px;
+    background: #d9f0d9;
+    border-radius: 12px;
+    padding: 20px;
+    border: 3px solid #7ab75a;
+  }
+  #mision-completa h2 {
+    margin-top: 0;
+    font-family: 'Fredoka', cursive;
+    color: #2e6c2d;
+  }
+  #mision-completa a {
+    color: #4a8527;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  #mision-completa a:hover {
     text-decoration: underline;
   }
-  /* Responsive */
-  @media (max-width: 600px) {
-    .photo-family-container {
-      width: 90vw;
-      height: 60vw;
-    }
-    #family-name {
-      width: 90%;
-    }
+  .felicitacion {
+    background-color: #b6eab7;
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2e6c2d;
+    display: none;
+    animation: pulse 2s infinite alternate;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 5px #4caf50; }
+    100% { box-shadow: 0 0 15px #2e6c2d; }
   }
 </style>
 </head>
 <body>
+
 <header>
   <h1>Bienvenidos a Cuidando el medio ambiente en familia</h1>
-  <h2>Instituto San Francisco de Asís - 2025</h2>
-  <p class="welcome-msg">Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
-  <div class="photo-family-container" title="Foto de la familia del pequeño guardián">
-    <img id="family-photo-preview" alt="Foto familia" src="" style="display:none;" />
-    <label for="photo-family-input" class="upload-photo-label">Subir foto familiar</label>
-    <input type="file" id="photo-family-input" accept="image/*" />
-  </div>
+  <h2>Instituto San Francisco de Asís - Año 2025</h2>
+  <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
 </header>
 
 <main>
-  <div class="input-group">
-    <label for="family-name">Ingrese el nombre de su familia para comenzar:</label><br />
-    <input type="text" id="family-name" placeholder="Ej: Familia García" />
-    <br />
-    <button id="start-btn">Empezar</button>
-  </div>
 
-  <!-- Nivel 1 -->
-  <section class="level" id="level1">
-    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 1: ¡Manos a la obra!</h3>
-    <p class="challenge-desc">Desafío: Crear un juguete con materiales reciclables.<br>Subí una imagen del juguete terminado.</p>
-    <a href="https://forms.gle/JmV9YbhGjTVN8JpW8" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir imagen</a>
+  <section id="foto-familiar-container">
+    <label id="foto-familiar-label" for="input-foto">Foto de la familia del pequeño/a guardián</label>
+    <input type="file" accept="image/*" id="input-foto" />
+    <img id="foto-familiar" alt="Foto familiar aparecerá aquí" />
   </section>
 
-  <!-- Nivel 2 -->
-  <section class="level" id="level2">
-    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 2: ¡Observamos y reflexionamos!</h3>
-    <p class="challenge-desc">Desafío: Dibujar un ambiente limpio vs. uno contaminado.<br>Subí una imagen del dibujo.</p>
-    <a href="https://forms.gle/YiDvgj3m2kugQBaU9" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir dibujo</a>
+  <section class="desafio" id="desafio1">
+    <h3>Nivel 1: ¡Manos a la obra!</h3>
+    <p>Desafío: Crear un juguete con materiales reciclables. Subí una imagen del juguete terminado.</p>
+    <button class="subir-btn" onclick="abrirFormulario(1)">Subir imagen</button>
+    <div id="miniatura1"></div>
+    <div class="felicitacion" id="felicitacion1">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
   </section>
 
-  <!-- Nivel 3 -->
-  <section class="level" id="level3">
-    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 3: ¡Hablamos en familia!</h3>
-    <p class="challenge-desc">Desafío: Grabar un video corto familiar explicando por qué cuidar el medio ambiente.<br>Subí el video.</p>
-    <a href="https://forms.gle/mZh2535NV5A1fonr7" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir video</a>
+  <section class="desafio" id="desafio2">
+    <h3>Nivel 2: ¡Observamos y reflexionamos!</h3>
+    <p>Desafío: Dibujar un ambiente limpio vs. uno contaminado. Subí una imagen del dibujo.</p>
+    <button class="subir-btn" onclick="abrirFormulario(2)" disabled>Subir dibujo</button>
+    <div id="miniatura2"></div>
+    <div class="felicitacion" id="felicitacion2">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
   </section>
 
-  <div id="congratulations">
-    <p>¡Felicitaciones, pequeño/a guardián del planeta!</p>
-    <p>Has completado todos los desafíos. ¡Gracias por ser parte del cambio!</p>
-    <img src="https://i.imgur.com/6NfmAPb.png" alt="Familia abrazando planeta feliz" style="width:150px; margin-top:1rem;" />
-  </div>
-</main>
+  <section class="desafio" id="desafio3">
+    <h3>Nivel 3: ¡Hablamos en familia!</h3>
+    <p>Desafío: Grabar un video corto familiar explicando por qué cuidar el medio ambiente. Subí el video.</p>
+    <button class="subir-btn" onclick="abrirFormulario(3)" disabled>Subir video</button>
+    <div id="miniatura3"></div>
+    <div class="felicitacion" id="felicitacion3">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
+  </section>
 
-<section id="gallery">
-  <h2>Misión Completa Guardianes</h2>
-  <div class="gallery-grid" id="gallery-grid">
-    <!-- Aquí se cargan imágenes y videos subidos -->
-  </div>
-</section>
+  <section id="mision-completa">
+    <h2>Misión Completa Guardianes</h2>
+    <p>¡Gracias por cuidar el planeta! Todos los trabajos están en la carpeta pública de Guardianes:</p>
+    <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank" rel="noopener noreferrer">Ver trabajos de todos los participantes</a>
+  </section>
 
-<footer>
-  <p>Síguenos en Instagram: <a href="https://www.instagram.com/inst_san_francisco?igsh=MmFsbHpqemo0NzYx" target="_blank" rel="noopener noreferrer">@inst_san_francisco</a></p>
-</footer>
-
-<script>
-  // Variables para manejar niveles y familia
-  const startBtn = document.getElementById('start-btn');
-  const familyNameInput = document.getElementById('family-name');
-  const levels = [document.getElementById('level1'), document.getElementById('level2'), document.getElementById('level3')];
-  const congrats = document.getElementById('congratulations');
-  const galleryGrid = document.getElementById('gallery-grid');
-  const photoInput = document.getElementById('photo-family-input');
-  const photoPreview = document.getElementById('family-photo-preview');
-
-  let currentLevel = 0;
-  let familyName = '';
-
-  // Foto familiar preview
-  photoInput.addEventListener('change', () => {
-    const file = photoInput.files[0];
-    if(file){
-      const url = URL.createObjectURL(file);
-      photoPreview.src = url;
-      photoPreview.style.display = 'block';
-    }
-  });
-
-  // Inicialmente solo desbloqueamos nivel 1 parcialmente
-  function updateLevels() {
-    levels.forEach((lvl, i) => {
-      if(i <= currentLevel){
-        lvl.classList.add('unlocked');
-        lvl.querySelector('.lock-icon').style.fill = '#56ab2f';
-      } else {
-        lvl.classList.remove('unlocked');
-        lvl.querySelector('.lock-icon').style.fill = '#a0a0a0';
-      }
-    });
-    if(currentLevel === levels.length){
-      congrats.style.display = 'block';
-    } else {
-      congrats.style.display = 'none';
-    }
-  }
-
-  // Abrir form en nueva pestaña y desbloquear
+</main
