@@ -1,0 +1,114 @@
+import zipfile
+import os
+
+# Crear estructura de carpetas y archivos modificados nuevamente
+project_dir = "/mnt/data/medio-ambiente-familias-final"
+os.makedirs(project_dir, exist_ok=True)
+
+# Archivos principales (modificados)
+index_html = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuidando el Medio Ambiente en Familia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Bienvenidos a Cuidando el Medio Ambiente en Familia</h1>
+    <p>Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
+  </header>
+
+  <main>
+    <section class="nivel">
+      <h2>Nivel 1: ¡Manos a la obra!</h2>
+      <p>Crear un juguete con materiales reciclables.</p>
+      <a class="boton" href="https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform?usp=dialog" target="_blank">Subir imagen</a>
+    </section>
+
+    <section class="nivel">
+      <h2>Nivel 2: ¡Observamos y reflexionamos!</h2>
+      <p>Dibujar un ambiente limpio vs. uno contaminado.</p>
+      <a class="boton" href="#" target="_blank">Subir dibujo</a>
+    </section>
+
+    <section class="nivel">
+      <h2>Nivel 3: ¡Hablamos en familia!</h2>
+      <p>Grabar un video explicando por qué cuidar el medio ambiente.</p>
+      <a class="boton" href="#" target="_blank">Subir video</a>
+    </section>
+
+    <section class="final">
+      <h2>¡Felicitaciones, pequeño/a guardián del planeta!</h2>
+      <p>Has completado todos los desafíos. ¡Gracias por ser parte del cambio!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Instituto San Francisco de Asís - Proyecto Ambiental</p>
+  </footer>
+</body>
+</html>
+"""
+
+style_css = """
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #e9f9ec;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+header {
+  background-color: #a3d9a5;
+  padding: 20px;
+  text-align: center;
+}
+h1 {
+  font-size: 2em;
+  color: #2e7d32;
+}
+main {
+  padding: 20px;
+}
+.nivel {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.boton {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+footer {
+  background: #dcedc8;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+}
+"""
+
+# Guardar los archivos
+with open(os.path.join(project_dir, "index.html"), "w", encoding="utf-8") as f:
+    f.write(index_html)
+with open(os.path.join(project_dir, "style.css"), "w", encoding="utf-8") as f:
+    f.write(style_css)
+
+# Crear archivo ZIP con el proyecto final
+zip_path = "/mnt/data/medio-ambiente-familias-final.zip"
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+    for foldername, subfolders, filenames in os.walk(project_dir):
+        for filename in filenames:
+            filepath = os.path.join(foldername, filename)
+            zipf.write(filepath, arcname=os.path.relpath(filepath, project_dir))
+
+zip_path
