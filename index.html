@@ -3,331 +3,360 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pequeños Guardianes - Instituto San Francisco de Asís</title>
+<title>Cuidando el medio ambiente en familia - Instituto San Francisco de Asís</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Fredoka+One&family=Quicksand&display=swap');
+
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #e7f0e7;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
     margin: 0; padding: 0;
-    color: #2a4d2a;
+    color: #2e4a1f;
   }
   header {
     text-align: center;
-    padding: 20px 10px 10px;
+    padding: 2rem 1rem 1rem;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+    color: white;
+    position: relative;
   }
-  header .cover-img {
-    width: 210mm;
-    height: 297mm;
-    background: #cde7cd url('https://via.placeholder.com/595x842?text=Foto+de+la+familia+del+peque%C3%B1o+guardi%C3%A1n') center center no-repeat;
-    background-size: contain;
-    margin: 0 auto 15px;
-    border: 2px solid #94bc94;
-    border-radius: 8px;
+  header::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 50, 0, 0.5);
+    z-index: 1;
   }
-  header h1 {
-    font-size: 1.8rem;
-    margin: 0 0 8px;
+  header > * {
+    position: relative; z-index: 2;
   }
-  header .welcome {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  main {
-    max-width: 800px;
-    margin: 20px auto;
-    background: #f0f9f0;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    margin: 0.5rem 0 0;
   }
   h2 {
-    color: #3a693a;
-    border-bottom: 2px solid #7bbb7b;
-    padding-bottom: 5px;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 600;
+    margin-top: 0;
   }
-  section.challenge {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #aacbaa;
+  p.welcome-msg {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 2rem;
   }
-  label {
-    display: block;
-    margin: 10px 0 5px;
+  .photo-family-container {
+    width: 300px;
+    height: 400px;
+    border: 5px solid #fff;
+    margin: 0 auto 2rem;
+    background-color: #e7f3e7;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
   }
-  input[type="file"] {
-    display: block;
-    margin-bottom: 10px;
+  .photo-family-container img {
+    max-width: 100%;
+    max-height: 100%;
   }
-  button {
-    background: #5ca05c;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
+  .upload-photo-label {
+    position: absolute;
+    bottom: 5px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.8);
+    border-radius: 20px;
+    padding: 5px 15px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s ease;
+    color: #2e4a1f;
+    font-size: 0.9rem;
   }
-  button:disabled {
-    background: #a5d1a5;
-    cursor: not-allowed;
-  }
-  button:hover:not(:disabled) {
-    background: #4b864b;
-  }
-  .message {
-    margin: 10px 0 0;
-    font-weight: 700;
-    color: #2a7f2a;
-    font-size: 1.1rem;
-  }
-  .hidden {
+  #photo-family-input {
     display: none;
   }
-  #congrats {
+  main {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    background: #f0f9f0cc;
+    border-radius: 15px;
+    padding: 1rem 2rem 3rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  .input-group {
     text-align: center;
+    margin-bottom: 2rem;
+  }
+  label[for="family-name"] {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  #family-name {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 60%;
+    max-width: 350px;
+    border-radius: 8px;
+    border: 2px solid #56ab2f;
+  }
+  #start-btn {
+    margin-top: 1rem;
+    background-color: #56ab2f;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #start-btn:hover {
+    background-color: #a8e063;
+  }
+  section.level {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 1rem;
+    border: 3px solid #56ab2f;
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    position: relative;
+  }
+  section.level.unlocked {
+    opacity: 1;
+    box-shadow: 0 0 15px #a8e063aa;
+  }
+  section.level h3 {
+    font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
-    margin: 20px 0;
-    color: #277227;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  #mission-complete {
-    margin-top: 30px;
+  .lock-icon {
+    width: 24px;
+    height: 24px;
+    fill: #a0a0a0;
+    transition: fill 0.3s ease;
   }
-  #mission-complete h2 {
-    margin-bottom: 15px;
+  section.level.unlocked .lock-icon {
+    fill: #56ab2f;
+  }
+  .challenge-desc {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #3a5a2a;
+  }
+  .btn-upload {
+    background-color: #56ab2f;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-upload:hover {
+    background-color: #a8e063;
+  }
+  .thumbnail {
+    margin-top: 1rem;
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 10px;
+    border: 2px solid #56ab2f;
+  }
+  #congratulations {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #d4edda;
+    border: 3px solid #28a745;
+    border-radius: 20px;
+    color: #155724;
+    font-size: 1.6rem;
+    font-weight: 700;
+    animation: popIn 1s ease forwards;
+    margin-top: 2rem;
+  }
+  @keyframes popIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
   #gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
+    max-width: 900px;
+    margin: 3rem auto 6rem;
+    padding: 1rem 1rem 2rem;
+    background: #f9fef9;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #a8e063aa;
   }
-  #gallery img, #gallery video {
-    max-width: 180px;
-    border-radius: 8px;
-    border: 2px solid #7bbc7b;
+  #gallery h2 {
+    text-align: center;
+    font-family: 'Baloo 2', cursive;
+    color: #2e4a1f;
+    margin-bottom: 1rem;
   }
-  #diploma {
-    display: block;
-    margin: 30px auto 10px;
-    max-width: 400px;
-    border: 3px solid #4a7a4a;
-    border-radius: 10px;
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 1rem;
   }
-  #download-diploma {
-    display: block;
-    margin: 0 auto 40px;
-    background: #3a6a3a;
+  .gallery-item {
+    border: 2px solid #56ab2f;
+    border-radius: 15px;
+    padding: 5px;
+    background: white;
+    box-shadow: 0 0 5px #a8e063aa;
+  }
+  .gallery-item img,
+  .gallery-item video {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  .gallery-item p {
+    font-weight: 600;
+    color: #2e4a1f;
+    text-align: center;
+    margin: 0.5rem 0 0;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    background: #2e4a1f;
+    color: white;
+  }
+  footer a {
+    color: #a8e063;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    .photo-family-container {
+      width: 90vw;
+      height: 60vw;
+    }
+    #family-name {
+      width: 90%;
+    }
   }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="cover-img" aria-label="Foto de la familia del pequeño guardián"></div>
-  <h1>Instituto San Francisco de Asís</h1>
-  <p class="welcome">
-    Bienvenidos a Cuidando el medio ambiente en familia<br />
-    Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.
-  </p>
+  <h1>Bienvenidos a Cuidando el medio ambiente en familia</h1>
+  <h2>Instituto San Francisco de Asís - 2025</h2>
+  <p class="welcome-msg">Gracias por sumarte a los pequeños guardianes para cuidar nuestro planeta.</p>
+  <div class="photo-family-container" title="Foto de la familia del pequeño guardián">
+    <img id="family-photo-preview" alt="Foto familia" src="" style="display:none;" />
+    <label for="photo-family-input" class="upload-photo-label">Subir foto familiar</label>
+    <input type="file" id="photo-family-input" accept="image/*" />
+  </div>
 </header>
 
 <main>
-
-  <section class="challenge" id="challenge1">
-    <h2>Desafío 1: Juguete reciclable</h2>
-    <p>Crear un juguete con materiales reciclables y subir una imagen.</p>
-    <label for="file1">Subir imagen:</label>
-    <input type="file" id="file1" accept="image/*" />
-    <button id="submit1" disabled>Enviar</button>
-    <p class="message" id="msg1"></p>
-  </section>
-
-  <section class="challenge hidden" id="challenge2">
-    <h2>Desafío 2: Dibujo medio ambiente</h2>
-    <p>Realizar un dibujo donde se visualice un medioambiente limpio y uno sucio y subir la imagen.</p>
-    <label for="file2">Subir imagen:</label>
-    <input type="file" id="file2" accept="image/*" />
-    <button id="submit2" disabled>Enviar</button>
-    <p class="message" id="msg2"></p>
-  </section>
-
-  <section class="challenge hidden" id="challenge3">
-    <h2>Desafío 3: Vídeo en familia</h2>
-    <p>Crear un vídeo corto en familia explicando por qué es importante cuidar el medio ambiente.</p>
-    <label for="file3">Subir vídeo:</label>
-    <input type="file" id="file3" accept="video/*" />
-    <button id="submit3" disabled>Enviar</button>
-    <p class="message" id="msg3"></p>
-  </section>
-
-  <div id="congrats" class="hidden">
-    <p>¡Felicitaciones! Una familia abrazando a un planeta tierra feliz.</p>
-    <img src="https://i.imgur.com/ClxZf8y.png" alt="Familia abrazando planeta feliz" width="200" />
+  <div class="input-group">
+    <label for="family-name">Ingrese el nombre de su familia para comenzar:</label><br />
+    <input type="text" id="family-name" placeholder="Ej: Familia García" />
+    <br />
+    <button id="start-btn">Empezar</button>
   </div>
 
-  <section id="mission-complete" class="hidden">
-    <h2>Misión Completa Guardianes</h2>
-    <div id="gallery" aria-live="polite"></div>
-    <img id="diploma" src="https://i.imgur.com/DvYErRl.png" alt="Diploma Pequeños Guardianes" />
-    <button id="download-diploma">Descargar Diploma</button>
+  <!-- Nivel 1 -->
+  <section class="level" id="level1">
+    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 1: ¡Manos a la obra!</h3>
+    <p class="challenge-desc">Desafío: Crear un juguete con materiales reciclables.<br>Subí una imagen del juguete terminado.</p>
+    <a href="https://forms.gle/JmV9YbhGjTVN8JpW8" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir imagen</a>
   </section>
 
+  <!-- Nivel 2 -->
+  <section class="level" id="level2">
+    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 2: ¡Observamos y reflexionamos!</h3>
+    <p class="challenge-desc">Desafío: Dibujar un ambiente limpio vs. uno contaminado.<br>Subí una imagen del dibujo.</p>
+    <a href="https://forms.gle/YiDvgj3m2kugQBaU9" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir dibujo</a>
+  </section>
+
+  <!-- Nivel 3 -->
+  <section class="level" id="level3">
+    <h3><svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6h-1V7a5 5 0 0 0-10 0v4H6a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zm-8-4a3 3 0 0 1 6 0v4H10V7z"/></svg> Nivel 3: ¡Hablamos en familia!</h3>
+    <p class="challenge-desc">Desafío: Grabar un video corto familiar explicando por qué cuidar el medio ambiente.<br>Subí el video.</p>
+    <a href="https://forms.gle/mZh2535NV5A1fonr7" target="_blank" class="btn-upload" rel="noopener noreferrer">Subir video</a>
+  </section>
+
+  <div id="congratulations">
+    <p>¡Felicitaciones, pequeño/a guardián del planeta!</p>
+    <p>Has completado todos los desafíos. ¡Gracias por ser parte del cambio!</p>
+    <img src="https://i.imgur.com/6NfmAPb.png" alt="Familia abrazando planeta feliz" style="width:150px; margin-top:1rem;" />
+  </div>
 </main>
 
+<section id="gallery">
+  <h2>Misión Completa Guardianes</h2>
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Aquí se cargan imágenes y videos subidos -->
+  </div>
+</section>
+
+<footer>
+  <p>Síguenos en Instagram: <a href="https://www.instagram.com/inst_san_francisco?igsh=MmFsbHpqemo0NzYx" target="_blank" rel="noopener noreferrer">@inst_san_francisco</a></p>
+</footer>
+
 <script>
-  // Helper function para habilitar botón cuando hay archivo
-  function setupFileInput(fileInputId, submitButtonId, messageId) {
-    const fileInput = document.getElementById(fileInputId);
-    const submitButton = document.getElementById(submitButtonId);
-    const message = document.getElementById(messageId);
+  // Variables para manejar niveles y familia
+  const startBtn = document.getElementById('start-btn');
+  const familyNameInput = document.getElementById('family-name');
+  const levels = [document.getElementById('level1'), document.getElementById('level2'), document.getElementById('level3')];
+  const congrats = document.getElementById('congratulations');
+  const galleryGrid = document.getElementById('gallery-grid');
+  const photoInput = document.getElementById('photo-family-input');
+  const photoPreview = document.getElementById('family-photo-preview');
 
-    fileInput.addEventListener('change', () => {
-      submitButton.disabled = !fileInput.files.length;
-      message.textContent = '';
-    });
-  }
+  let currentLevel = 0;
+  let familyName = '';
 
-  // Guardar archivos en localStorage como URL para simular subida
-  function readFileAsDataURL(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = () => reject('Error leyendo archivo');
-      reader.readAsDataURL(file);
-    });
-  }
-
-  // Estado de los desafíos completados
-  let challengesCompleted = JSON.parse(localStorage.getItem('challengesCompleted')) || {
-    1: false,
-    2: false,
-    3: false
-  };
-
-  // Función para mostrar siguiente desafío y guardar estado
-  function unlockChallenge(num) {
-    if (num === 1) {
-      challengesCompleted[1] = true;
-      document.getElementById('challenge2').classList.remove('hidden');
-    } else if (num === 2) {
-      challengesCompleted[2] = true;
-      document.getElementById('challenge3').classList.remove('hidden');
-    } else if (num === 3) {
-      challengesCompleted[3] = true;
-      document.getElementById('mission-complete').classList.remove('hidden');
+  // Foto familiar preview
+  photoInput.addEventListener('change', () => {
+    const file = photoInput.files[0];
+    if(file){
+      const url = URL.createObjectURL(file);
+      photoPreview.src = url;
+      photoPreview.style.display = 'block';
     }
-    localStorage.setItem('challengesCompleted', JSON.stringify(challengesCompleted));
-  }
-
-  // Actualizar botón enviar y mensajes para cada desafío
-  function setupChallenge(challengeNum, inputId, buttonId, messageId, isVideo = false) {
-    const input = document.getElementById(inputId);
-    const button = document.getElementById(buttonId);
-    const message = document.getElementById(messageId);
-
-    setupFileInput(inputId, buttonId, messageId);
-
-    button.addEventListener('click', async () => {
-      if (!input.files.length) return;
-
-      const file = input.files[0];
-
-      if (isVideo && !file.type.startsWith('video/')) {
-        message.textContent = 'Por favor subí un archivo de vídeo válido.';
-        return;
-      }
-      if (!isVideo && !file.type.startsWith('image/')) {
-        message.textContent = 'Por favor subí un archivo de imagen válido.';
-        return;
-      }
-
-      try {
-        const dataUrl = await readFileAsDataURL(file);
-
-        // Guardamos el archivo en localStorage para la galería simulada
-        const galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-        galleryData.push({
-          type: isVideo ? 'video' : 'image',
-          src: dataUrl,
-          challenge: challengeNum
-        });
-        localStorage.setItem('galleryData', JSON.stringify(galleryData));
-
-        message.textContent = '¡Archivo subido con éxito!';
-        button.disabled = true;
-        input.disabled = true;
-
-        unlockChallenge(challengeNum);
-
-        showCongrats();
-
-        if (challengesCompleted[1] && challengesCompleted[2] && challengesCompleted[3]) {
-          renderGallery();
-        }
-
-      } catch (err) {
-        message.textContent = 'Error leyendo el archivo.';
-      }
-    });
-  }
-
-  function showCongrats() {
-    const congratsDiv = document.getElementById('congrats');
-    congratsDiv.classList.remove('hidden');
-    setTimeout(() => {
-      congratsDiv.classList.add('hidden');
-    }, 5000);
-  }
-
-  function renderGallery() {
-    const galleryDiv = document.getElementById('gallery');
-    galleryDiv.innerHTML = '';
-    const galleryData = JSON.parse(localStorage.getItem('galleryData')) || [];
-
-    galleryData.forEach(item => {
-      if (item.type === 'image') {
-        const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = 'Imagen subida en desafío';
-        galleryDiv.appendChild(img);
-      } else if (item.type === 'video') {
-        const video = document.createElement('video');
-        video.src = item.src;
-        video.controls = true;
-        video.width = 180;
-        galleryDiv.appendChild(video);
-      }
-    });
-  }
-
-  // Descargar diploma como PNG
-  document.getElementById('download-diploma').addEventListener('click', () => {
-    const diplomaUrl = document.getElementById('diploma').src;
-    const a = document.createElement('a');
-    a.href = diplomaUrl;
-    a.download = 'diploma_pequenos_guardianes.png';
-    a.click();
   });
 
-  // Inicialización
-  window.addEventListener('load', () => {
-    // Restaurar estado desafíos para mostrar los desbloqueados
-    if (challengesCompleted[1]) document.getElementById('challenge2').classList.remove('hidden');
-    if (challengesCompleted[2]) document.getElementById('challenge3').classList.remove('hidden');
-    if (challengesCompleted[3]) document.getElementById('mission-complete').classList.remove('hidden');
+  // Inicialmente solo desbloqueamos nivel 1 parcialmente
+  function updateLevels() {
+    levels.forEach((lvl, i) => {
+      if(i <= currentLevel){
+        lvl.classList.add('unlocked');
+        lvl.querySelector('.lock-icon').style.fill = '#56ab2f';
+      } else {
+        lvl.classList.remove('unlocked');
+        lvl.querySelector('.lock-icon').style.fill = '#a0a0a0';
+      }
+    });
+    if(currentLevel === levels.length){
+      congrats.style.display = 'block';
+    } else {
+      congrats.style.display = 'none';
+    }
+  }
 
-    // Si ya hay archivos subidos y desafíos completos, mostrar galería
-    if (challengesCompleted[3]) renderGallery();
-
-    // Configurar desafíos
-    setupChallenge(1, 'file1', 'submit1', 'msg1');
-    setupChallenge(2, 'file2', 'submit2', 'msg2');
-    setupChallenge(3, 'file3', 'submit3', 'msg3', true);
-  });
-</script>
-
-</body>
-</html>
+  // Abrir form en nueva pestaña y desbloquear
