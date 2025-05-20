@@ -48,3 +48,130 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+<a href="ENLACE_A_TU_GOOGLE_FORM" target="_blank" style="
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 20px;">
+  ¡Subí tu foto como Guardián!
+</a>
+<footer style="text-align:center; padding:20px; color:#555;">
+  Proyecto Pequeños Guardianes | Instituto San Francisco | 2025
+</footer>
+<!-- Botón para subir foto -->
+<div style="text-align:center; margin-top: 40px;">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform?usp=header" target="_blank" style="
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    font-size: 18px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    ¡Subí tu foto como Guardián!
+  </a>
+</div>
+<!-- Footer -->
+<footer style="text-align:center; padding:20px; color:#777; font-size: 14px;">
+  Proyecto Pequeños Guardianes - Instituto San Francisco - Año 2025
+</footer>
+from zipfile import ZipFile
+from pathlib import Path
+
+# Crear estructura de archivos
+project_dir = Path("/mnt/data/pequenos_guardianes_web")
+project_dir.mkdir(parents=True, exist_ok=True)
+
+# Contenido del archivo index.html con mejoras
+index_html = """
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pequeños Guardianes - ISF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f9f4;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #8fd694;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            padding: 30px;
+        }
+        .upload-button {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .upload-button:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            background-color: #e8f5e9;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pequeños Guardianes</h1>
+    <p>Instituto San Francisco - Año 2025</p>
+</header>
+
+<div class="container">
+    <p>¡Bienvenidos a nuestro espacio digital! Este proyecto está pensado para que las familias participen activamente en el cuidado del medio ambiente.</p>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYOK3jvzlEKI4gXGOBHUEhL6G0vtVtNqzShcySihEVFN6nAQ/viewform?usp=header"
+       target="_blank" class="upload-button">
+        ¡Subí tu foto como Guardián!
+    </a>
+</div>
+
+<footer>
+    Proyecto Pequeños Guardianes - Instituto San Francisco - Año 2025
+</footer>
+
+</body>
+</html>
+"""
+
+# Guardar el archivo index.html
+index_path = project_dir / "index.html"
+index_path.write_text(index_html, encoding="utf-8")
+
+# Crear archivo ZIP
+zip_path = Path("/mnt/data/pequenos_guardianes_actualizado.zip")
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(index_path, arcname="index.html")
+
+zip_path.name
