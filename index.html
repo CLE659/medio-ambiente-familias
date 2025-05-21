@@ -7,105 +7,119 @@
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
-      background: url('https://i.imgur.com/rmiJPMl.jpg') no-repeat center center fixed;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/7/72/Cartoon_forest_background.png') no-repeat center center fixed;
       background-size: cover;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       color: #2a3a1b;
     }
     header {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       padding: 30px 20px;
       text-align: center;
     }
     header h1 {
       font-family: 'Baloo 2', cursive;
       font-size: 2.8em;
-      margin: 0.2em 0 0.1em;
-    }
-    header h2 {
-      font-weight: 400;
-      font-size: 1.4em;
       margin: 0;
     }
     main {
       max-width: 900px;
       margin: 30px auto;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 12px;
-      padding: 20px 30px;
-      box-shadow: 0 0 15px #8aa17a55;
+      padding: 30px;
     }
-    .section-title {
+    .desafio {
+      border: 3px dashed #8bc34a;
+      background: #f0fff0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .desafio h2 {
       font-family: 'Fredoka', cursive;
-      font-size: 1.8em;
-      margin-bottom: 15px;
     }
-    .nivel {
-      background: #f0faf0;
-      border: 2px solid #a3d9a5;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 25px;
+    .formulario-container {
+      display: none;
+      margin-top: 15px;
     }
-    .nivel h3 {
-      font-family: 'Baloo 2', cursive;
-      color: #356622;
-      font-size: 1.5em;
+    .btn-formulario, .btn-cumplido {
+      background: #7ab75a;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-cumplido {
+      display: none;
+      margin-top: 10px;
+    }
+    .galeria {
+      margin-top: 40px;
+      padding: 20px;
+      background: #eaffea;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .galeria a {
+      color: #2e7d32;
+      font-weight: bold;
+      text-decoration: none;
     }
     iframe {
       width: 100%;
       height: 500px;
       border: none;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-    .galeria {
-      background: #d9f0d9;
-      border: 3px solid #7ab75a;
-      padding: 20px;
-      border-radius: 12px;
-      margin-top: 40px;
-      text-align: center;
-    }
-    .galeria h2 {
-      font-family: 'Fredoka', cursive;
-      color: #2e6c2d;
-    }
-    .galeria a {
-      font-weight: bold;
-      color: #4a8527;
-      text-decoration: none;
-    }
-    .galeria a:hover {
-      text-decoration: underline;
     }
   </style>
+  <script>
+    function abrirFormulario(nivel) {
+      document.getElementById('formulario' + nivel).style.display = 'block';
+    }function marcarCumplido(nivel) {
+  document.getElementById('btn-cumplido-' + nivel).style.display = 'inline-block';
+  const siguiente = document.getElementById('desafio' + (nivel + 1));
+  if (siguiente) siguiente.style.display = 'block';
+}
+
+  </script>
 </head>
 <body>
   <header>
     <h1>Pequeños Guardianes</h1>
-    <h2>Instituto San Francisco de Asís - 2025</h2>
-    <p>Cuidando el medio ambiente en familia</p>
-  </header>
-  <main>
-    <section class="nivel">
-      <h3>Nivel 1: ¡Manos a la obra!</h3>
-      <p>Desafío: Crear un juguete con materiales reciclables.</p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScYspLT7MZCJHkHiFgZ5zKsW_H0gAMRQUnb_vXjLfnzNsNKFA/viewform?embedded=true">Cargando…</iframe>
-    </section>
-    <section class="nivel">
-      <h3>Nivel 2: ¡Observamos y reflexionamos!</h3>
-      <p>Desafío: Dibujar un ambiente limpio vs. uno contaminado.</p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0LUlNwYGOcIqKOyMC61W08q_dDPtDdhMtk1oCld0-W9o6JQ/viewform?embedded=true">Cargando…</iframe>
-    </section>
-    <section class="nivel">
-      <h3>Nivel 3: ¡Hablamos en familia!</h3>
-      <p>Desafío: Grabar un video explicando por qué cuidar el medio ambiente.</p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdRk25JfRWx3b_uo4wNN8XHkVEFvxQhnXYzHxHLnGHyHb4ehQ/viewform?embedded=true">Cargando…</iframe>
-    </section><section class="galeria">
+    <p>¡Una aventura familiar para cuidar el medio ambiente!</p>
+  </header>  <main>
+    <section class="desafio" id="desafio1">
+      <h2>Desafío 1: Crear un juguete reciclado</h2>
+      <button class="btn-formulario" onclick="abrirFormulario(1)">Completar desafío</button>
+      <div class="formulario-container" id="formulario1">
+        <iframe src="https://forms.gle/JmV9YbhGjTVN8JpW8"></iframe>
+        <button class="btn-cumplido" id="btn-cumplido-1" onclick="marcarCumplido(1)">Desafío cumplido</button>
+      </div>
+    </section><section class="desafio" id="desafio2" style="display:none">
+  <h2>Desafío 2: Dibujar el ambiente</h2>
+  <button class="btn-formulario" onclick="abrirFormulario(2)">Completar desafío</button>
+  <div class="formulario-container" id="formulario2">
+    <iframe src="https://forms.gle/YiDvgj3m2kugQBaU9"></iframe>
+    <button class="btn-cumplido" id="btn-cumplido-2" onclick="marcarCumplido(2)">Desafío cumplido</button>
+  </div>
+</section>
+
+<section class="desafio" id="desafio3" style="display:none">
+  <h2>Desafío 3: Video en familia</h2>
+  <button class="btn-formulario" onclick="abrirFormulario(3)">Completar desafío</button>
+  <div class="formulario-container" id="formulario3">
+    <iframe src="https://forms.gle/mZh2535NV5A1fonr7"></iframe>
+    <button class="btn-cumplido" id="btn-cumplido-3">Desafío cumplido</button>
+  </div>
+</section>
+
+<section class="galeria">
   <h2>Misión Completa Guardianes</h2>
-  <p>¡Gracias por participar! Mirá los trabajos de las familias aquí:</p>
-  <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ver galería en Drive</a>
+  <p>¡Gracias por participar! Podés ver los trabajos de todas las familias aquí:</p>
+  <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ver galería de trabajos</a>
 </section>
 
   </main>
