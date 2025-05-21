@@ -78,9 +78,6 @@
     background: #f0faf0;
     transition: background-color 0.4s ease;
   }
-  .desafio.superado {
-    background-color: #b6eab7;
-  }
   .desafio h3 {
     font-family: 'Baloo 2', cursive;
     margin-top: 0;
@@ -91,37 +88,13 @@
     font-size: 1.1em;
     margin: 8px 0 15px;
   }
-  button.subir-btn {
-    background: #7ab75a;
-    color: white;
+  .formulario-google {
+    width: 100%;
+    height: 600px;
     border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-  }
-  button.subir-btn[disabled] {
-    background: #a3d9a5;
-    cursor: default;
-  }
-  button.subir-btn:hover:not([disabled]) {
-    background: #5c8b3c;
-  }
-  .miniatura {
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 8px;
-    border: 2px solid #7ab75a;
-  }
-  video.miniatura-video {
-    max-width: 100%;
-    max-height: 240px;
-    border-radius: 8px;
-    border: 2px solid #7ab75a;
-    display: block;
-    margin-top: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #a3d9a5;
   }
   #mision-completa {
     margin-top: 40px;
@@ -143,22 +116,12 @@
   #mision-completa a:hover {
     text-decoration: underline;
   }
-  .felicitacion {
-    background-color: #b6eab7;
-    border: 2px solid #4caf50;
-    border-radius: 10px;
-    margin-top: 15px;
-    padding: 15px;
+  footer {
     text-align: center;
-    font-size: 1.3em;
-    font-weight: 700;
-    color: #2e6c2d;
-    display: none;
-    animation: pulse 2s infinite alternate;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 5px #4caf50; }
-    100% { box-shadow: 0 0 15px #2e6c2d; }
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #5b7550;
+    padding-bottom: 20px;
   }
 </style>
 </head>
@@ -181,31 +144,44 @@
   <section class="desafio" id="desafio1">
     <h3>Nivel 1: ¡Manos a la obra!</h3>
     <p>Desafío: Crear un juguete con materiales reciclables. Subí una imagen del juguete terminado.</p>
-    <button class="subir-btn" onclick="abrirFormulario(1)">Subir imagen</button>
-    <div id="miniatura1"></div>
-    <div class="felicitacion" id="felicitacion1">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
+    <iframe class="formulario-google" src="https://forms.gle/JmV9YbhGjTVN8JpW8" loading="lazy"></iframe>
   </section>
 
   <section class="desafio" id="desafio2">
     <h3>Nivel 2: ¡Observamos y reflexionamos!</h3>
     <p>Desafío: Dibujar un ambiente limpio vs. uno contaminado. Subí una imagen del dibujo.</p>
-    <button class="subir-btn" onclick="abrirFormulario(2)" disabled>Subir dibujo</button>
-    <div id="miniatura2"></div>
-    <div class="felicitacion" id="felicitacion2">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
+    <iframe class="formulario-google" src="https://forms.gle/YiDvgj3m2kugQBaU9" loading="lazy"></iframe>
   </section>
 
   <section class="desafio" id="desafio3">
     <h3>Nivel 3: ¡Hablamos en familia!</h3>
     <p>Desafío: Grabar un video corto familiar explicando por qué cuidar el medio ambiente. Subí el video.</p>
-    <button class="subir-btn" onclick="abrirFormulario(3)" disabled>Subir video</button>
-    <div id="miniatura3"></div>
-    <div class="felicitacion" id="felicitacion3">¡Familia abrazando el planeta feliz! ¡Desafío superado!</div>
+    <iframe class="formulario-google" src="https://forms.gle/mZh2535NV5A1fonr7" loading="lazy"></iframe>
   </section>
 
   <section id="mision-completa">
     <h2>Misión Completa Guardianes</h2>
     <p>¡Gracias por cuidar el planeta! Todos los trabajos están en la carpeta pública de Guardianes:</p>
-    <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank" rel="noopener noreferrer">Ver trabajos de todos los participantes</a>
+    <a href="https://drive.google.com/drive/folders/1eY-A9kR0Dr2NWwb9o1GjuM1Y6tsauDIc" target="_blank" rel="noopener noreferrer">Ver trabajos de todos los participantes</a>
   </section>
 
-</main
+</main>
+
+<footer>
+  Autor del proyecto: Ferreira Cristian Leonardo - Profesor de TIC
+</footer>
+
+<script>
+  // Vista previa para foto familiar
+  const inputFoto = document.getElementById('input-foto');
+  const imgPreview = document.getElementById('foto-familiar');
+  inputFoto.addEventListener('change', function (e) {
+    const archivo = e.target.files[0];
+    if (archivo) {
+      imgPreview.src = URL.createObjectURL(archivo);
+    }
+  });
+</script>
+
+</body>
+</html>
