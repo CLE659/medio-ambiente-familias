@@ -1,113 +1,139 @@
-<!DOCTYPE html><html lang="es">
+from pathlib import Path
+
+# HTML content based on the last user's request
+html_content = """
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pequeños Guardianes - Instituto San Francisco de Asís</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Fredoka&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pequeños Guardianes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Fredoka', sans-serif;
-      background: url('https://i.ibb.co/F56ZJGV/fondo-infantil.jpg') no-repeat center center fixed;
+      background: url('https://i.ibb.co/TBXLq2q/fondo-infantil.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #333;
+      color: #2c3e50;
     }
     header {
-      background-color: rgba(255, 255, 255, 0.9);
-      text-align: center;
+      background: rgba(255,255,255,0.9);
       padding: 20px;
-      border-bottom: 4px solid #77c77c;
+      text-align: center;
+      border-bottom: 4px solid #27ae60;
     }
     header h1 {
       margin: 0;
       font-size: 2.5em;
-      color: #357a38;
+      color: #27ae60;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     section {
-      background-color: rgba(255, 255, 255, 0.95);
-      margin: 40px auto;
-      padding: 20px;
-      max-width: 800px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
     }
     h2 {
-      color: #2e7d32;
-    }
-    .formulario {
-      margin: 20px 0;
+      color: #2980b9;
     }
     iframe {
       width: 100%;
       height: 600px;
       border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .btn-continuar {
+    .desafio-btn {
       display: none;
-      background: #4caf50;
+      margin-top: 15px;
+      background: #27ae60;
       color: white;
       padding: 12px 20px;
-      margin-top: 15px;
-      font-size: 1.1em;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+    .desafio-btn:hover {
+      background: #219150;
     }
     .galeria {
       text-align: center;
-      padding: 20px;
     }
     .galeria a {
-      color: #2e7d32;
-      font-weight: bold;
+      display: inline-block;
+      background: #2980b9;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
       text-decoration: none;
-      font-size: 1.2em;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .galeria a:hover {
+      background: #1f6aa5;
     }
   </style>
 </head>
-<body><header>
+<body>
+
+<header>
   <h1>Pequeños Guardianes</h1>
-  <p>¡Completá cada desafío para avanzar y compartir tu compromiso con el planeta!</p>
-</header><section id="nivel1">
-  <h2>Nivel 1 - Crear un juguete reciclado</h2>
-  <p>Subí una imagen del juguete que crearon en familia usando materiales reciclables.</p>
-  <div class="formulario">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeXjMwG2UdXh3xYtEFka_Z_eu7S-cDStFW3bJgGEGhnKY2RgQ/viewform?embedded=true">Cargando…</iframe>
-  </div>
-  <button class="btn-continuar" onclick="mostrarNivel('nivel2')">Desafío Cumplido - Continuar</button>
-</section><section id="nivel2" style="display: none;">
-  <h2>Nivel 2 - Dibujar ambientes</h2>
-  <p>Subí una imagen del dibujo que hicieron sobre un ambiente limpio y otro contaminado.</p>
-  <div class="formulario">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc1tYyXkN-Yb_Q41PYvNvR-epFZuW6H3dXoYaDyyFPIi4kBMQ/viewform?embedded=true">Cargando…</iframe>
-  </div>
-  <button class="btn-continuar" onclick="mostrarNivel('nivel3')">Desafío Cumplido - Continuar</button>
-</section><section id="nivel3" style="display: none;">
-  <h2>Nivel 3 - Video en familia</h2>
-  <p>Subí un video donde expliquen por qué es importante cuidar el medio ambiente.</p>
-  <div class="formulario">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe4CyW1MJQgn7bmsB_gGkIf8Oaz8e6pYkE-_NlqNB2DgFWUlw/viewform?embedded=true">Cargando…</iframe>
-  </div>
-  <button class="btn-continuar" onclick="mostrarNivel('final')">Desafío Cumplido - Ver Galería</button>
-</section><section id="final" style="display: none;">
-  <h2>Misión completa - Guardianes</h2>
-  <p>¡Gracias por participar! Podés ver todos los trabajos de las familias aquí:</p>
-  <div class="galeria">
-    <a href="https://drive.google.com/drive/folders/1eY-A9kR0Dr2NWwb9o1GjuM1Y6tsauDIc" target="_blank">Ver galería de Guardianes</a>
-  </div>
-</section><script>
-  function mostrarNivel(id) {
-    document.getElementById(id).style.display = 'block';
-    window.scrollTo({ top: document.getElementById(id).offsetTop, behavior: 'smooth' });
+  <p>¡Completá los desafíos en familia y cuidemos el planeta!</p>
+</header>
+
+<main>
+  <section id="nivel1">
+    <h2>Nivel 1: ¡Manos a la obra!</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScJ6zCcmExiSlK-hrq6flpjWnKHh_0c_cGrWA_NuOY2EDeqTw/viewform?embedded=true">Cargando…</iframe>
+    <button class="desafio-btn" onclick="mostrarNivel(2)">¡Desafío 1 cumplido!</button>
+  </section>
+
+  <section id="nivel2" style="display:none;">
+    <h2>Nivel 2: ¡Observamos y reflexionamos!</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdCV9BbfxjCEa1CSnPQAPqZ7W3SDqU7_7exiklvLy4qcz-bGw/viewform?embedded=true">Cargando…</iframe>
+    <button class="desafio-btn" onclick="mostrarNivel(3)">¡Desafío 2 cumplido!</button>
+  </section>
+
+  <section id="nivel3" style="display:none;">
+    <h2>Nivel 3: ¡Hablamos en familia!</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScmp3xF6jkk0VjzXKoVHHMytNQJ1XShRYDPM2HidXg7vPbJ8g/viewform?embedded=true">Cargando…</iframe>
+    <div class="galeria" style="margin-top: 25px;">
+      <a href="https://drive.google.com/drive/folders/1kjN8q9nDWrV6hfVv7gWOQXppBjcD0VIu" target="_blank">Ver galería de participantes</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  function mostrarNivel(nivel) {
+    if(nivel === 2) {
+      document.getElementById('nivel2').style.display = 'block';
+    }
+    if(nivel === 3) {
+      document.getElementById('nivel3').style.display = 'block';
+    }
   }
 
-  // Detectar envío de formularios mediante mensaje postMessage (desde iframe de Google Forms no es posible directamente)
-  // Solución manual: mostrar botón tras cierto tiempo como simulación del envío
-  const botones = document.querySelectorAll('.btn-continuar');
-  botones.forEach((btn, i) => {
+  // Simular "envío completado" mostrando el botón después de 15 segundos
+  document.querySelectorAll('.desafio-btn').forEach((btn, i) => {
     setTimeout(() => {
       btn.style.display = 'inline-block';
-    }, 15000 * (i + 1)); // 15 segundos por desafío
+    }, 15000 * (i+1));
   });
-</script></body>
+</script>
+
+</body>
 </html>
+"""
+
+# Save the HTML to a file
+file_path = Path("/mnt/data/pequenos_guardianes_final.html")
+file_path.write_text(html_content, encoding="utf-8")
+file_path.name
